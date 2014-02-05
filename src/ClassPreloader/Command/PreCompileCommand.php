@@ -224,5 +224,7 @@ EOF
 
         $output->writeln("> Compiled loader written to {$outputFile}");
         $output->writeln('- ' . (round(filesize($outputFile) / 1024)) . ' kb');
+        $minFile = str_replace('.php', '.min.php', $outputFile);
+        file_put_contents($minFile, php_strip_whitespace($outputFile));
     }
 }
